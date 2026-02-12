@@ -1,0 +1,13 @@
+{
+  "name": "editorial-platform",
+  "version": "1.0.0",
+  "description": "Plateforme éditoriale - Dashboard et gestion d'articles",
+  "scripts": {
+    "install:all": "npm install --prefix backend-node && npm install --prefix frontend-react",
+    "dev": "concurrently \"npm run dev --prefix backend-node\" \"npm run dev --prefix frontend-react\"",
+    "test:backend": "npm test --prefix backend-node"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Article {
+  id          String    @id @default(uuid())
+  title       String
+  content     String
+  excerpt     String
+  author      String // Just a string as per requirements
+  network     String // ID du réseau utilisateur
+  status      String    @default("draft") // 'draft' | 'published' | 'archived'
+  featured    Boolean   @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  categories Category[] // Implicit many-to-many
+
+  @@map("articles")
+}
+
+model Category {
+  id          String @id @default(uuid())
+  name        String
+  slug        String @unique
+  description String
+  color       String // hex color code
+
+  articles Article[]
+
+  @@map("categories")
+}
+
+model Network {
+  id          String @id @default(uuid())
+  name        String
+  description String
+
+  @@map("networks")
+}
+
+model EmailNotification {
+  id         String   @id @default(uuid())
+  articleId  String
+  recipients String // Serialized array of emails (JSON or CSV)
+  subject    String
+  sentAt     DateTime @default(now())
+  status     String   @default("sent") // 'sent' | 'failed'
+
+  @@map("email_notifications")
+}

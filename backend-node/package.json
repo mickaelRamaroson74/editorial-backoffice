@@ -1,0 +1,41 @@
+{
+  "name": "express-ts-sqlite-prisma",
+  "version": "1.0.0",
+  "description": "Express + TypeScript + SQLite + Prisma backend",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate dev",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "db:seed": "ts-node prisma/seed.ts",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.4",
+    "express": "^4.21.2",
+    "helmet": "^8.0.0",
+    "morgan": "^1.10.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/jest": "^30.0.0",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^22.10.1",
+    "@types/supertest": "^6.0.3",
+    "jest": "^30.2.0",
+    "prisma": "^5.22.0",
+    "supertest": "^7.2.2",
+    "ts-jest": "^29.4.6",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.2"
+  }
+}
