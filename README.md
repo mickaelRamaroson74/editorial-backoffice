@@ -35,6 +35,33 @@ Le projet utilise des variables d'environnement pour configurer les URL et les p
 2. Variables disponibles :
    - `VITE_API_URL` : URL complète de l'API backend (ex: `http://localhost:3000/api`)
 
+## Base de données
+
+L'application utilise SQLite avec Prisma ORM.
+
+### Initialisation
+
+Avant de lancer l'application pour la première fois, vous devez initialiser la base de données :
+
+```bash
+cd backend-node
+
+# Générer le client Prisma
+npm run db:generate
+
+# Créer la base de données et appliquer les migrations
+npm run db:migrate
+
+# (Optionnel) Remplir la base avec des données de test
+npm run db:seed
+```
+
+Pour explorer les données visuellement, vous pouvez utiliser Prisma Studio :
+
+```bash
+npm run db:studio
+```
+
 ## Lancement
 
 ```bash
